@@ -14,6 +14,10 @@ const ComponentSchema = new Schema(
       type: Number,
       required: true,
     },
+    page_id: {
+      type: mongoose.Types.ObjectId,
+      ref: "pages",
+    },
     isActive: {
       type: Boolean,
       required: true,
@@ -25,4 +29,4 @@ const ComponentSchema = new Schema(
   }
 );
 
-export default mongoose.model("component", ComponentSchema);
+export default mongoose.model("components", ComponentSchema);
