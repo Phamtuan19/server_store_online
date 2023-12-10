@@ -1,4 +1,7 @@
+/**
+ * "A bit of fragrance clings to the hand that gives flowers!"
+ */
 {
-    "presets": ["@babel/preset-env"]
-  }
-  
+   "presets": ["@babel/preset-env"],
+   "plugins": [["@babel/transform-runtime"], ["module-resolver", { "alias": { "~": "./src" } }]]
+}
