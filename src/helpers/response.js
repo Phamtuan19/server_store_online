@@ -5,7 +5,7 @@ const responseSuccess = (res, data) => {
    return res.status(STATUS.SUCCESS).send(data);
 };
 
-const responseError = (res, error, statusConfig = null) => {
+const responseError = (res, error, statusConfig = STATUS.BAD_REQUEST) => {
    if (error instanceof ApiError) {
       const status = error.status;
 
@@ -15,7 +15,11 @@ const responseError = (res, error, statusConfig = null) => {
          return res.status(statusConfig || status).send(data);
       }
       // Case error is object
-      return res.status(status).send(responseData('Đã có lỗi xảy ra!!!', null, false));
+      return res.status(statusConfig).send(responseData('Đã có lỗi xảy ra!!!', null, false));
+   }
+
+   if (typeof error === 'string') {
+      return res.status(statusConfig).send(responseData(error, null, false));
    }
 };
 
